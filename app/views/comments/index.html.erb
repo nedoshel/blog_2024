@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Comments</h1>
+
+<div id="comments">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Content</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= link_to comment.id, [@post, comment] %> </td>
+          <td><%= comment.content.truncate_words(20) %></td>
+          <td><%= button_to "Удалить", [@post, comment], method: :delete, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New comment", new_post_comment_path(@post), class: 'btn btn-primary' %>

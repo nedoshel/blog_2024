@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<div id="posts">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Content</th>
+          <th scope="col">Comments</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.id, post %> </td>
+            <td><%= post.content.truncate_words(20) %></td>
+            <td><%= link_to post.comments.size, post_comments_path(post) %></td>
+            <td><%= link_to "изменить", edit_post_path(post), class: 'btn btn-warning' %></td>
+            <td><%= button_to "Удалить", post, method: :delete, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+<%= link_to "New post", new_post_path, class: 'btn btn-primary' %>

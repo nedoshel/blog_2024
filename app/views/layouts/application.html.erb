@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <%= render_breadcrumbs builder: BreadcrumbBuilder %>
+        </ol>
+      </nav>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
